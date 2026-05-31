@@ -4,7 +4,7 @@
 #include <cstddef>
 
 /*
-    Design Notes:
+    *Design Notes:
         - Fixed-width integers are used to structs are identical on both 32 and 64-bit builds
             + <cstdint>
         - struct marshalling on bridge invocations
@@ -30,7 +30,7 @@
 
 
 /*
-    Max Sizes:
+    * Max Sizes:
         - Kept as compile-time constants
             + stack-allocated buffers in hot-path code do not need heap allocation
 */
@@ -46,7 +46,7 @@ constexpr uint32_t NETENGINE_SESSION_ID = 64;
 
 
 /*
-    Result/Error Codes:
+    * Result/Error Codes:
         - Negative vals are errors
         - Zero is success
         - Positive values are info/status codes
@@ -77,7 +77,7 @@ enum class NetResult : int32_t
 };
 
 /*
-    Identifying Peers:
+    *Identifying Peers:
         - PeerID is 64-bit opaque handle
             + Assigned by transport layer post-handshake
         - Zero (PEER_NOUGHT) means "no peers"
@@ -107,16 +107,16 @@ struct PacketHeader
 
 static_assert(sizeof(PacketHeader) == 12, "PacketHeader layout changed - update C# struct too");
 
-// Embedding magic number to reject stray datagrams
+// * Embedding magic number to reject stray datagrams
 constexpr uint32_t NETENGINE_PACKET_MAGIC = 41456701; // "AEg" + version in big-endian
 
-// PacketFlags bit positions within PacketHeader::flags
+// * PacketFlags bit positions within PacketHeader::flags
 constexpr uint8_t PKT_FLAG_RELIABLE = 0x01; // Packet requires ACK and retransmit
 constexpr uint8_t PKT_FLAG_ENCRYPTED = 0x02; // Packet payload is AES-128 encrypted
 constexpr uint8_t PKT_FLAG_COMPRESSED = 0x04; // Packet payload is bitstream-compressed
 
 
-//GenreID - identifies which genre module handles game-specific logic
+// * identifies which genre module handles game-specific logic
 enum class GenreID : uint16_t
 {
     None = 0,
@@ -126,7 +126,7 @@ enum class GenreID : uint16_t
     Custom = 4,
 };
 
-//Engine Type - identifies which game engine the C# layer is driving
+//identifies which game engine the C# layer is driving
 //Passed to NetEngine_Init so engine-specific adapter paths are selected
 
 enum class EngineType : uint16_t
