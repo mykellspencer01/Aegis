@@ -1,5 +1,4 @@
 /*
-
 * Summary: Non-blocking, cross-platform UDP socket
 * UDPSocket wraps the OS Socket API behind a single class to promote a platform-agnostic engine
 
