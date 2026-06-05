@@ -66,6 +66,9 @@ class UDPSocket
         UDPSocket(const UDPSocket&) = delete;
         UDPSocket& operator = (const UDPSocket&) = delete;
 
+        UDPSocket(UDPSocket&& other) noexcept; // Move constructor
+        UDPSocket& operator = (UDPSocket&& other) noexcept; // Move assignment
+
         // Allocate OS Socket, bind to local port, set non-blocking
         NetResult Open();
 
