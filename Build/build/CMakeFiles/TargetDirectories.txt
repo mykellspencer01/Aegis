@@ -1,0 +1,3 @@
+/Users/mykellspencer/Documents/GitHub/Aegis/Build/build/CMakeFiles/NetEngine_Core.dir
+/Users/mykellspencer/Documents/GitHub/Aegis/Build/build/CMakeFiles/edit_cache.dir
+/Users/mykellspencer/Documents/GitHub/Aegis/Build/build/CMakeFiles/rebuild_cache.dir
