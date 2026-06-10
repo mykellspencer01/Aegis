@@ -59,10 +59,14 @@ namespace Genres {
             NetResult InitAll();
             void TickAll(double deltaSec);
             void ShutdownAll();
+            void NotifyPeerConnected(PeerID peer);
+            void NotifyPeerDisconnected(PeerID peer);
         
         private:
             RegistryModule() = default;
             std::unordered_map<uint8_t, std::unique_ptr<GenreModule>> t_modules;
     };
+
+    
 } //namespace Genres
 } //namespace NetEngine

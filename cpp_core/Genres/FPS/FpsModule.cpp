@@ -23,6 +23,17 @@ namespace Genres {
         return NetResult::Ok;
     }
 
+    void FpsModule::OnTick(double dt)
+    {
+        t_serverTime += dt;
+    }
+
+    void FpsModule::OnPacketReceived(PeerID sender, uint8_t channel, NetEngine::Serializer::BitReader& reader)
+    {
+        uint16_t rpcID = static_cast<uint16_t>(reader.ReadBits(16));
+        if(rpcID == RPC_RPS_HIT_SCAN) HandleHitScan(sender, reader);
+    }
+
     void FpsModule::OnPeerConnected(PeerID peer)
     {
         NE_LOG("Peer %llu connected to FPS session", (unsigned long long)peer);
@@ -31,6 +42,11 @@ namespace Genres {
     void FpsModule::OnPeerDisconnected(PeerID peer)
     {
         NE_LOG("Peer %llu disconnected from FPS session", (unsigned long long)peer);
+    }
+
+    void FpsModule::OnShutdown()
+    {
+        t_history.clear();
     }
 
     void FpsModule::RecordHistoryFrame(const std::vector<PlayerState>& states, double timestamp)

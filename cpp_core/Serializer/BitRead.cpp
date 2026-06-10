@@ -5,7 +5,7 @@
 namespace NetEngine {
 namespace Serializer {
 
-    inline BitReader::BitReader(const uint8_t* buffer, uint32_t bufferSize)
+    BitReader::BitReader(const uint8_t* buffer, uint32_t bufferSize)
         : t_buffer(buffer),
         t_bufferBits(bufferSize),
         t_scratch(0),
@@ -14,7 +14,7 @@ namespace Serializer {
         t_failed(false)
     {}
 
-    inline void BitReader::Refill()
+    void BitReader::Refill()
     {
         //Load up to 8 bytes into scratch
         while(t_scratchBits <= 56)
@@ -29,7 +29,7 @@ namespace Serializer {
         }
     }
 
-    inline uint32_t BitReader::ReadBits(uint32_t numBits)
+    uint32_t BitReader::ReadBits(uint32_t numBits)
     {
         if(t_failed || numBits == 0 || numBits > 32) return 0;
 
@@ -49,21 +49,21 @@ namespace Serializer {
         return result;
     }
 
-    inline bool BitReader::ReadBool() { return ReadBits(1) != 0; }
-    inline uint32_t BitReader::ReadUInt32() { return ReadBits(32); }
-    inline uint16_t BitReader::ReadUInt16() { return static_cast<uint16_t>(ReadBits(16)); }
-    inline uint8_t BitReader::ReadUInt8() { return static_cast<uint8_t>(ReadBits(8)); }
+    bool BitReader::ReadBool() { return ReadBits(1) != 0; }
+    uint32_t BitReader::ReadUInt32() { return ReadBits(32); }
+    uint16_t BitReader::ReadUInt16() { return static_cast<uint16_t>(ReadBits(16)); }
+    uint8_t BitReader::ReadUInt8() { return static_cast<uint8_t>(ReadBits(8)); }
 
-    inline float BitReader::ReadFloat()
+    float BitReader::ReadFloat()
     {
         uint32_t asInteger = ReadBits(32);
         float result;
 
-        std:memcpy(&result, &asInteger, sizeof(result));
+        std::memcpy(&result, &asInteger, sizeof(result));
         return result;
     }
 
-    inline void BitReader::ReadString(char* outBuffer, uint32_t bufferSize)
+    void BitReader::ReadString(char* outBuffer, uint32_t bufferSize)
     {
         uint8_t length = ReadUInt8();
         uint32_t safeLength = std::min(static_cast<uint32_t>(length), bufferSize - 1);
@@ -74,7 +74,7 @@ namespace Serializer {
         for(uint32_t i = safeLength; i < length; ++i) ReadUInt8();
     }
 
-    inline bool BitReader::HasFailed() const { return t_failed; }
-    inline uint32_t BitReader::GetBitsRead() const { return t_bitIndex; }
+    bool BitReader::HasFailed() const { return t_failed; }
+    uint32_t BitReader::GetBitsRead() const { return t_bitIndex; }
 } //namespace Serializer
 } //namespace NetEngine

@@ -193,5 +193,21 @@ sockaddr_in UDPSocket::MakeSockAddr(const RemoteEndpoint& ep)
     return addr;
 }
 
+UDPSocket& UDPSocket::operator=(UDPSocket&& other) noexcept
+{
+    if(this != &other)
+    {
+        Close();
+        t_socket = other.t_socket;
+        t_localPort = other.t_localPort;
+        t_isOpen = other.t_isOpen;
+
+        other.t_socket = INVALID_SOCKET_HANDLE;
+        other.t_isOpen = false;
+        other.t_localPort = 0;
+    }
+    return *this;
+}
+
 } //namespace transport
 } //namespace netengine

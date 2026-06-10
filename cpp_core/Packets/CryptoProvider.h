@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include "EngineTypes.h"
+#include "../EngineTypes.h"
 #include <cstdint>
 #include <array>
 
@@ -49,10 +49,10 @@ namespace Crypto {
                 uint32_t plainTextLength, uint8_t* outCypher, uint32_t& outLength);
             NetResult Decrypt(uint16_t seq, const uint8_t* cypherText, 
                 uint32_t cypherTextLength, uint8_t* outPlain, uint32_t& outLength);
-        
+                
         private:
-                //IV = (first 14 bytes of key) XOR (sequence) 
-            std::array<uint8_t, AES128_KEY_BYTES> DerIVe(uint16_t seq) const; //derive 16-byte per-pkt IV
+            //IV = (first 14 bytes of key) XOR (sequence) 
+            std::array<uint8_t, AES128_KEY_BYTES> DeriveIV(uint16_t seq) const; //derive 16-byte per-pkt IV
             std::array<uint8_t, AES128_KEY_BYTES> t_key; //128-bit session key
             bool t_hasKey;
     };

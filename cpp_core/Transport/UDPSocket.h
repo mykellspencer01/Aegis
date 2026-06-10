@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "EngineTypes.h"
+#include "../EngineTypes.h"
 #include <string>
 #include <cstdint>
 
@@ -90,7 +90,7 @@ class UDPSocket
         uint16_t t_localPort; // Requested bind port
         bool t_isOpen; //Guard to prevent double-open
         // * Populate a sockaddr_in froma remote endpoint to send calls
-        static sockaddr_in MakeSockAddr(const RemoteEndpoint& ep); 
+        static sockaddr_in MakeSockAddr(const RemoteEndpoint& ep);
 };
 
 } //namespace Transport

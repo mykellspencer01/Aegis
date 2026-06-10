@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "EngineTypes.h"
+#include "../EngineTypes.h"
 #include "../Serializer/BitWrite.h"
 #include "../Serializer/BitRead.h"
 #include <cstdint>

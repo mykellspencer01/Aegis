@@ -18,6 +18,8 @@ namespace NetEngine {
 namespace Crypto {
     //Constructor/Destructor
 
+    CryptoProvider::~CryptoProvider() = default;
+
     CryptoProvider::CryptoProvider() : t_hasKey(false)
     {
         t_key.fill(0);
@@ -26,7 +28,7 @@ namespace Crypto {
     void CryptoProvider::SetSeshKey(const uint8_t* key)
     {
         if(!key) return;
-        std:memcpy(t_key.data(), key, AES128_KEY_BYTES);
+        std::memcpy(t_key.data(), key, AES128_KEY_BYTES);
         t_hasKey = true;
         NE_LOG("Session key set.");
     }
@@ -34,7 +36,7 @@ namespace Crypto {
     bool CryptoProvider::HasKey() const { return t_hasKey; }
 
     // * Deriving the IV
-    std::array<uint8_t, AES128_KEY_BYTES> CryptoProvider::DerIVe(uint16_t seq) const
+    std::array<uint8_t, AES128_KEY_BYTES> CryptoProvider::DeriveIV(uint16_t seq) const
     {
         std::array<uint8_t, AES128_KEY_BYTES> iv = t_key;
 
@@ -59,25 +61,25 @@ namespace Crypto {
 
         #else
             if(!t_hasKey) return NetResult::CryptoFail;
-            auto iv = DerIVe(seq);
+            auto iv = DeriveIV(seq);
 
             //AES128 encryption
-            EVP_CYPHER_CTX* ctx = EVP_CYPHER_CTX_new();
+            EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
 
             if(!ctx) return NetResult::CryptoFail;
 
-            int ok = EVP_EncryptInit(ctx, EVP_AES_128_ctr(), nullptr, t_key.data(), iv.data());
+            int ok = EVP_EncryptInit_ex(ctx, EVP_aes_128_ctr(), nullptr, t_key.data(), iv.data());
             if(!ok)
             {
-                EVP_CYPHER_CTX_free(ctx);
-                NE_LOG("EVP_EncryptInit failed.");
+                EVP_CIPHER_CTX_free(ctx);
+                NE_LOG("EVP_EncryptInit_ex failed.");
                 return NetResult::CryptoFail;
             }
 
             int outLength1 = 0, outLength2 = 0;
             EVP_EncryptUpdate(ctx, outCypher, &outLength1, plainText, static_cast<int>(plainTextLength));
-            EVP_EncryptFinal(ctx, outCypher + outLength1, &outLength2);
-            EVP_CYPHER_CTX_free(ctx);
+            EVP_EncryptFinal_ex(ctx, outCypher + outLength1, &outLength2);
+            EVP_CIPHER_CTX_free(ctx);
 
             uint32_t cypherLength = static_cast<uint32_t>(outLength1 + outLength2);
 
@@ -85,7 +87,7 @@ namespace Crypto {
             unsigned int hmacLength = 0;
             uint8_t hmacFull[32]; //SHA256 output is 32 bytes
             HMAC(EVP_sha256(), t_key.data(), static_cast<int>(AES128_KEY_BYTES), 
-                outCypher, cypherLength, hmacFull, &hmacLength)
+                outCypher, cypherLength, hmacFull, &hmacLength);
             
             std::memcpy(outCypher + cypherLength, hmacFull, HMAC_TAG_BYTES);
             outLength = cypherLength + HMAC_TAG_BYTES;
@@ -94,7 +96,7 @@ namespace Crypto {
     }
 
     //* Decryption
-    NetResult Decrypt(uint16_t seq, const uint8_t* cypherText, 
+    NetResult CryptoProvider::Decrypt(uint16_t seq, const uint8_t* cypherText, 
         uint32_t cypherTextLength, uint8_t* outPlain, uint32_t& outLength)
     {
         outLength = 0;
@@ -117,7 +119,7 @@ namespace Crypto {
             unsigned int hmacLength = 0;
             uint8_t hmacFull[32];
             HMAC(EVP_sha256(), t_key.data(), static_cast<int>(AES128_KEY_BYTES), 
-                outCypher, cypherLength, hmacFull, &hmacLength)
+                cypherText, actualCypherLength, hmacFull, &hmacLength);
 
             //constant-time comparison to prevent timing attacks
             int tagMismatch = 0;
@@ -131,17 +133,17 @@ namespace Crypto {
             }
 
             //AES-128-CTR decryption
-            auto iv = DerIVe(seq);
-
-            EVP_CYPHER_CTX* ctx = EVP_CYPHER_CTX_new();
+            EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
             if(!ctx) return NetResult::CryptoFail;
 
-            EVP_DecrpytInit(ctx, EVP_AES_128_ctr(), nullptr, t_key.data(), iv.data());
+            auto iv = DeriveIV(seq);
+
+            EVP_DecryptInit_ex(ctx, EVP_aes_128_ctr(), nullptr, t_key.data(), iv.data());
 
             int outLength1 = 0, outLength2 = 0;
             EVP_DecryptUpdate(ctx, outPlain, &outLength1, cypherText, static_cast<int>(actualCypherLength));
-            EVP_DecryptFinal(ctx, outPlain + outLength1, &outLength2);
-            EVP_CYPHER_CTX_free(ctx);
+            EVP_DecryptFinal_ex(ctx, outPlain + outLength1, &outLength2);
+            EVP_CIPHER_CTX_free(ctx);
 
             outLength = static_cast<uint32_t>(outLength1 + outLength2);
             return NetResult::Ok;

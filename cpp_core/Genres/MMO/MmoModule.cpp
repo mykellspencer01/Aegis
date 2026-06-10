@@ -81,7 +81,7 @@ namespace Genres {
     std::vector<PeerID> MmoModule::GetAoiPeers(PeerID peer) const
     {
         auto target = t_players.find(peer);
-        if(target == t_players.end()) return;
+        if(target == t_players.end()) return {};
 
         std::vector<PeerID> result;
         for(const GridCell& nc : GetNeighborCells(target -> second.cell))

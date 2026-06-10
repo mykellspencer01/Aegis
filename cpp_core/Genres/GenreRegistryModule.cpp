@@ -61,5 +61,15 @@ namespace Genres {
             m -> OnShutdown();
         t_modules.clear();
     }
+
+    void RegistryModule::NotifyPeerConnected(PeerID peer)
+    {
+        for(auto& [k, m] : t_modules) m -> OnPeerConnected(peer);
+    }
+
+    void RegistryModule::NotifyPeerDisconnected(PeerID peer)
+    {
+        for(auto& [k, m] : t_modules) m -> OnPeerDisconnected(peer);
+    }
 } //namespace Genres
 } //namespace NetEngine

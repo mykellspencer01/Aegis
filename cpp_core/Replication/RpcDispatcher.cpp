@@ -10,7 +10,7 @@
 namespace NetEngine {
 namespace Replication {
 
-    inline NetResult RpcDispatcher::RegisterRpc(RpcID id , RpcHandler handler)
+    NetResult RpcDispatcher::RegisterRpc(RpcID id , RpcHandler handler)
     {
         if(id == 0 || !handler) return NetResult::InvalidArg;
 
@@ -20,7 +20,7 @@ namespace Replication {
         return NetResult::Ok;
     }
 
-    inline NetResult RpcDispatcher::Dispatch(PeerID sender, const uint8_t* payload, uint32_t payloadLength)
+    NetResult RpcDispatcher::Dispatch(PeerID sender, const uint8_t* payload, uint32_t payloadLength)
     {
         if(!payload || payloadLength < 2) return NetResult::InvalidArg;
 
@@ -42,7 +42,7 @@ namespace Replication {
         return NetResult::Ok;
     }
 
-    inline NetResult RpcDispatcher::SerializeCall(
+    NetResult RpcDispatcher::SerializeCall(
         RpcID id, uint8_t* outBuffer, uint32_t bufferSize,
         std::function<void(Serializer::BitWriter&)> writeArgs,
         uint32_t& outLength)

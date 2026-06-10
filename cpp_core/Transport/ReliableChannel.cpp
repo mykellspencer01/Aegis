@@ -223,7 +223,7 @@ namespace Transport {
             return c;
         };
 
-        auto readU16 = [&] -> uint16_t
+        auto readU16 = [&]() -> uint16_t
         {
             uint16_t d = (uint16_t(raw[offset]) << 8) | raw[offset + 1];
             offset += 2;

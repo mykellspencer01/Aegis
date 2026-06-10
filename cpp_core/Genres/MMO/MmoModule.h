@@ -63,6 +63,7 @@ namespace Genres {
             MmoModule();
 
             GenreID GetGenreID() const override { return GenreID::MMO; }
+            const char* GetName() const override { return "MMO"; }
             NetResult OnInit() override;
             void OnTick(double dt) override;
             void OnPacketReceived(PeerID sender, uint8_t channel,

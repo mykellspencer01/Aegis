@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "EngineTypes.h"
+#include "../EngineTypes.h"
 #include <array>
 #include <cstdint>
 #include <vector>
