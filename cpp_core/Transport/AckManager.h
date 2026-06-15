@@ -61,6 +61,7 @@ class AckManager // * One instance per user
         uint16_t t_nextOutSequence; //next seq. num to assign to an outgoing packet
         uint16_t t_remoteAck; //highest remote seq. received
         uint16_t t_remoteAckBits; //bitmask of the 16 seqs before t_remoteAck
+        bool t_hasReceivedAny = false;
 
         // * Circular buffer of sent-but-unacked packets
         std::array<PendingPacket, ACK_WINDOW_SIZE> t_pendingPackets;

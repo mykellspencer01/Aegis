@@ -11,6 +11,7 @@ namespace Serializer {
         t_scratch(0),
         t_scratchBits(0),
         t_bitIndex(0),
+        t_byteIndex(0),
         t_failed(false)
     {}
 
@@ -19,13 +20,12 @@ namespace Serializer {
         //Load up to 8 bytes into scratch
         while(t_scratchBits <= 56)
         {
-            uint32_t byteIndex = t_bitIndex / 8;
-            uint32_t byteCap = t_bufferBits / 8;
-            if(byteIndex >= byteCap) break;
+            uint32_t byteCap = t_bufferBits;
+            if(t_byteIndex >= byteCap) break;
 
-            t_scratch |= (static_cast<uint64_t>(t_buffer[byteIndex]) << t_scratchBits);
+            t_scratch |= (static_cast<uint64_t>(t_buffer[t_byteIndex]) << t_scratchBits);
             t_scratchBits += 8;
-            t_bitIndex += 8;
+            t_byteIndex += 1;
         }
     }
 
@@ -45,7 +45,7 @@ namespace Serializer {
         uint32_t result = static_cast<uint32_t>(t_scratch) & mask;
         t_scratch >>= numBits;
         t_scratchBits -= numBits;
-
+        t_bitIndex += numBits;
         return result;
     }
 

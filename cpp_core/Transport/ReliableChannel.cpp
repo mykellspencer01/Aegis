@@ -209,7 +209,11 @@ namespace Transport {
     //* Handle Datagram for parsing raw bytes recvd from socket
     void ReliableChannel::HandleDatagram(const RemoteEndpoint& fromAddr, const uint8_t* raw, uint32_t rawLength)
     {
-        if(rawLength < sizeof(PacketHeader)) return;
+        if(rawLength < sizeof(PacketHeader)) 
+        {
+            NE_LOG("Datagram too short: %u bytes", rawLength);
+            return;
+        }
 
         //Parse Header
         uint32_t offset = 0;
@@ -238,23 +242,39 @@ namespace Transport {
         hdr.flags = raw[offset++];
         hdr.channelID = raw[offset++];
 
+        NE_LOG("Received magic = 0x%08X Expected 0x%08X from %s:%u",
+            hdr.magic, NETENGINE_PACKET_MAGIC, fromAddr.ip, fromAddr.port);
+
         //Validate magic. Drop packets from unknown sources
-        if(hdr.magic != NETENGINE_PACKET_MAGIC) return;
+        if(hdr.magic != NETENGINE_PACKET_MAGIC){
+            NE_LOG("Magic mismatch - dropping");
+            return;
+        }
 
         //Resolve sender to a Peer ID
         std::ostringstream key;
         key << fromAddr.ip << ":" << fromAddr.port;
+        NE_LOG("Looking up key: %s", key.str().c_str());
 
         PeerID senderID = PEER_NOUGHT;
         {
             std::lock_guard<std::mutex> lk(t_mutex);
             auto p = t_addrToPeer.find(key.str());
+
+            //debugging
+            NE_LOG("Map contains %zu entries", t_addrToPeer.size());
+            for(auto& [key, peer] : t_addrToPeer)
+                NE_LOG(" Key = '%s' -> peer %llu", key.c_str(), (unsigned long long)peer);
+            auto temp = t_addrToPeer.find(key.str());
+            NE_LOG("Find result: %s", (temp == t_addrToPeer.end()) ? "NOT FOUND" : "FOUND");
+
             if(p == t_addrToPeer.end()) return;
             senderID = p -> second;
 
             PeerState& state = t_peers.at(senderID);
 
             if(state.manager.IsDuplicate(hdr.sequenceNum)) return;
+            NE_LOG("IsDuplicate check: %s", state.manager.IsDuplicate(hdr.sequenceNum) ? "DUPED - dropping" : "NO DUPE");
             state.manager.RecordReceived(hdr.sequenceNum);
 
             state.manager.ProcessAck(hdr.ack, hdr.ackBits); //process ack info this packet carries about sent pkts

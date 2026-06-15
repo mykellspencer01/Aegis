@@ -76,8 +76,8 @@ namespace Serializer{
             if(t_byteIndex < t_bufferSize) t_buffer[t_byteIndex++] = static_cast<uint8_t>(t_scratch & 0xFF);
             else t_overflow = true;
 
-            t_scratch = 0;
-            t_scratchBits = 0;
+            t_scratch >>= 8;
+            t_scratchBits -= 8;
         }
     }
 
@@ -97,8 +97,8 @@ namespace Serializer{
             }
 
             t_buffer[t_byteIndex++] = static_cast<uint8_t>(t_scratch & 0xFF);
-            t_scratch = 0;
-            t_scratchBits = 0;
+            t_scratch >>= 8;
+            t_scratchBits -= 8;
         } 
     }
 }

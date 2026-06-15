@@ -89,6 +89,9 @@ target_include_directories(NetEngine_Core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Replication
     ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Packets
     ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Genres
+    ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Genres/FPS
+    ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Genres/RTS
+    ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Genres/MMO
 )
 
 if(NETENGINE_USE_OPENSSL)
@@ -108,7 +111,7 @@ endif()
 
 if(NETENGINE_BUILD_TESTS)
     enable_testing()
-    add_subdirectory(tests)
+    add_subdirectory(../cpp_core/CoreTests tester_build)
 endif()
 
 message(STATUS "NetEngine ${PROJECT_VERSION} configured")

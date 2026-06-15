@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DNETENGINE_LOGGING -DNETENGINE_USE_OPENSSL -DNetEngine_Core_EXPORTS
 
-CXX_INCLUDES = -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Transport -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Serializer -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Replication -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Packets -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Genres -isystem /opt/homebrew/opt/openssl@3/include
+CXX_INCLUDES = -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Transport -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Serializer -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Replication -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Packets -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Genres -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Genres/FPS -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Genres/RTS -I/Users/mykellspencer/Documents/GitHub/Aegis/Build/../cpp_core/Genres/MMO -isystem /opt/homebrew/opt/openssl@3/include
 
 CXX_FLAGSarm64 = -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wno-unused-parameter
 

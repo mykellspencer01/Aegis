@@ -32,6 +32,7 @@ namespace Serializer {
             uint64_t t_scratch;
             uint32_t t_scratchBits;
             uint32_t t_bitIndex;
+            uint32_t t_byteIndex;
             bool t_failed;
             void Refill();
     };

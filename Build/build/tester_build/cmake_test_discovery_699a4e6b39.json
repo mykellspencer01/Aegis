@@ -1,0 +1,145 @@
+{
+  "tests": 23,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "ReliableChannel",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "Init_ReturnsOk",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Transport.cpp",
+          "line": 50
+        },
+        {
+          "name": "Init_DoubleInit_ReturnAlreadyInitialized",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Transport.cpp",
+          "line": 58
+        },
+        {
+          "name": "Send_UnknownPeer_ReturnsUnknownPeer",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Transport.cpp",
+          "line": 68
+        },
+        {
+          "name": "Loopback_UnreliableSend_CallbackFires",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Transport.cpp",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "name": "AckManager",
+      "tests": 10,
+      "testsuite": [
+        {
+          "name": "TrackSent_AppearsInRetransmits",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 21
+        },
+        {
+          "name": "TrackSent_DoesNotAppearBeforeThreshold",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 35
+        },
+        {
+          "name": "ProcessAck_ClearsSlot",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 48
+        },
+        {
+          "name": "ProcessAck_AckBitsMaskClears",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 62
+        },
+        {
+          "name": "IsDuplicate_ReturnsTrueForReceived",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 77
+        },
+        {
+          "name": "IsDuplicate_ReturnsFalseForUnreceived",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 84
+        },
+        {
+          "name": "RemoteAck_UpdatesToHighestReceived",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 94
+        },
+        {
+          "name": "RemoteAckBits_ReflectsReceivedHistory",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 103
+        },
+        {
+          "name": "SequenceWrapAround_HandledCorrectly",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 115
+        },
+        {
+          "name": "Reset_ClearsAllStates",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_AckManager.cpp",
+          "line": 133
+        }
+      ]
+    },
+    {
+      "name": "BitWriter",
+      "tests": 8,
+      "testsuite": [
+        {
+          "name": "RoundTrip_BasicFields",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 23
+        },
+        {
+          "name": "RoundTrip_UInt32",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 51
+        },
+        {
+          "name": "RoundTrip_String",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 65
+        },
+        {
+          "name": "RoundTrip_EmptyString",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 79
+        },
+        {
+          "name": "BitWidthMasking",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 95
+        },
+        {
+          "name": "Overflow_SetsFlag",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 111
+        },
+        {
+          "name": "Overflow_DoesNotWritePastBuffer",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 120
+        },
+        {
+          "name": "MultiField_TightPacking",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 148
+        }
+      ]
+    },
+    {
+      "name": "BitReader",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "Underflow_SetsFailedFlag",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
+          "line": 137
+        }
+      ]
+    }
+  ]
+}

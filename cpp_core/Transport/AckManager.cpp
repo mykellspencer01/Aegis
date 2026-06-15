@@ -20,6 +20,7 @@ namespace Transport {
 
     void AckManager::Reset()
     {
+        t_hasReceivedAny = false;
         t_nextOutSequence = 0;
         t_remoteAck = 0;
         t_remoteAckBits = 0;
@@ -90,6 +91,8 @@ namespace Transport {
     //Incoming
     void AckManager::RecordReceived(uint16_t sequence)
     {
+        t_hasReceivedAny = true;
+
         if(SequenceIsNewer(sequence, t_remoteAck))
         {
             //Shift ackbits left by gap between old and new ack
@@ -110,6 +113,7 @@ namespace Transport {
 
     bool AckManager::IsDuplicate(uint16_t sequence) const
     {
+        if(!t_hasReceivedAny) return false; //no pkts rcvd, no dupe
         //Duplicate if it is within the received window and the corresponding bit is already set 
         if(sequence == t_remoteAck) return true;
 
