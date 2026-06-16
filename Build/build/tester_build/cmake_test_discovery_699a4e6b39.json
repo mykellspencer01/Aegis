@@ -1,5 +1,5 @@
 {
-  "tests": 23,
+  "tests": 54,
   "name": "AllTests",
   "testsuites": [
     {
@@ -138,6 +138,179 @@
           "name": "Underflow_SetsFailedFlag",
           "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_BitWriter.cpp",
           "line": 137
+        }
+      ]
+    },
+    {
+      "name": "SnapshotManager",
+      "tests": 11,
+      "testsuite": [
+        {
+          "name": "RegisterObj_ReturnsValidID",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 44
+        },
+        {
+          "name": "RegisterObj_MultiObjs_UniqueIDs",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 52
+        },
+        {
+          "name": "CreateDelta_BeforeCapture_ReturnsNotInit",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 68
+        },
+        {
+          "name": "CreatedDelta_ChangedObjIncluded",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 80
+        },
+        {
+          "name": "CreateDelta_UnchangedEmpty",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 102
+        },
+        {
+          "name": "CreateDelta_NewClient_FullState",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 119
+        },
+        {
+          "name": "UnregisteredObj_ProducesDeletedDelta",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 139
+        },
+        {
+          "name": "ApplyDelta_UpdatesObjectState",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 161
+        },
+        {
+          "name": "GetLatestTick_ReturnsCorrectTick",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 189
+        },
+        {
+          "name": "FindSnapshot_ReturnsNull_BeforeCapture",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 206
+        },
+        {
+          "name": "FindSnapshot_ReturnsCorrectSnapshot",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Snapshot.cpp",
+          "line": 212
+        }
+      ]
+    },
+    {
+      "name": "CryptoProvider",
+      "tests": 8,
+      "testsuite": [
+        {
+          "name": "HasKey_TrueAfterSet",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 20
+        },
+        {
+          "name": "RoundTrip_BasicPayload",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 29
+        },
+        {
+          "name": "RoundTrip_SingleByte",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 56
+        },
+        {
+          "name": "DiffSequences_ProduceDiffCipher",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 74
+        },
+        {
+          "name": "TemperedCipher_FailsDecrypt",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 91
+        },
+        {
+          "name": "TamperedHmacTag_FailsDecrypt",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 108
+        },
+        {
+          "name": "DecryptWithoutKey_CryptoFails",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 127
+        },
+        {
+          "name": "WrongSequence_FailsDecrypt",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Crypto.cpp",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "name": "RpcDispatcher",
+      "tests": 12,
+      "testsuite": [
+        {
+          "name": "Register_NullHandler_ReturnsInvalidArg",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 16
+        },
+        {
+          "name": "Register_ZeroID_ReturnsInvalidArg",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 22
+        },
+        {
+          "name": "Register_ValidHandler_ReturnsOk",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 28
+        },
+        {
+          "name": "Dispatch_Calls_RegisterHandler",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 36
+        },
+        {
+          "name": "Dispatch_UnknownID_Returns_GenreModuleNotFound",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 52
+        },
+        {
+          "name": "Dispatch_ShortPayload_ReturnsInvalidArg",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 64
+        },
+        {
+          "name": "Dispatch_NullPayload_ReturnsInvalidArg",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 71
+        },
+        {
+          "name": "Dispatch_HandlerReceives_CorrectSender",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 79
+        },
+        {
+          "name": "Dispatch_HandlerReadsArgs",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 97
+        },
+        {
+          "name": "UnregisteredRpc_HandlerNotCalled_AfterRemoval",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 127
+        },
+        {
+          "name": "SerializeCall_WritesIDAndArgs",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 146
+        },
+        {
+          "name": "FullRoundTrip_SerializeAndDispatch",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
+          "line": 174
         }
       ]
     }

@@ -44,6 +44,10 @@ namespace Crypto {
         // a lightweight scheme; production system would use a nonce construction (ex. ChaCha20-Poly1305)
         iv[0] ^= static_cast<uint8_t>(seq & 0xFF);
         iv[1] ^= static_cast<uint8_t>((seq >> 8) & 0xFF);
+
+        //mix into bytes 8 and 9 so single-byte seqs differ more
+        //iv[8] ^= static_cast<uint8_t>(seq & 0xFF);
+        //iv[9] ^= static_cast<uint8_t>((seq >> 8) & 0xFF);
         return iv;
     }
 

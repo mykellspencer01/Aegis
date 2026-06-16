@@ -55,5 +55,11 @@ namespace Replication {
         outLength = writer.GetBytesWritten();
         return writer.HasOverflowed() ? NetResult::BufferOverflow : NetResult::Ok;
     }
+
+    void RpcDispatcher::UnregisteredRpc(RpcID id)
+    {
+        std::lock_guard<std::mutex> lk(t_mutex);
+        t_handlers.erase(id);
+    }
 } //namespace Replication
 } //namespace NetEngine
