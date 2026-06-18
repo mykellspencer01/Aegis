@@ -138,7 +138,7 @@ TEST(BitReader, Underflow_SetsFailedFlag)
 {
     uint8_t buffer[1] = {0xAB};
     BitReader r(buffer, 1);
-    r.ReadBits(0);
+    r.ReadBits(8);
     r.ReadBits(1);
     EXPECT_TRUE(r.HasFailed());
 }

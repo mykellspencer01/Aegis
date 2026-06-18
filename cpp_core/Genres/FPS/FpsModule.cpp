@@ -88,7 +88,7 @@ namespace Genres {
         float origX = reader.ReadFloat(), origY = reader.ReadFloat(), origZ = reader.ReadFloat();
         float dirX = reader.ReadFloat(), dirY = reader.ReadFloat(), dirZ = reader.ReadFloat();
         float cliientTime = reader.ReadFloat();
-        uint8_t weaponID = reader.ReadFloat();
+        uint8_t weaponID = reader.ReadUInt8();
 
         if(reader.HasFailed()) return;
 

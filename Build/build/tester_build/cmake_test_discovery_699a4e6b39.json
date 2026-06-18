@@ -1,5 +1,5 @@
 {
-  "tests": 54,
+  "tests": 83,
   "name": "AllTests",
   "testsuites": [
     {
@@ -311,6 +311,169 @@
           "name": "FullRoundTrip_SerializeAndDispatch",
           "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_Rpc.cpp",
           "line": 174
+        }
+      ]
+    },
+    {
+      "name": "FpsModule",
+      "tests": 8,
+      "testsuite": [
+        {
+          "name": "OnInit_ReturnsOk",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 34
+        },
+        {
+          "name": "OnInit_DoubleInit_ReturnsOk",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 40
+        },
+        {
+          "name": "HitScan_CallbackFires",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 49
+        },
+        {
+          "name": "HitScan_CallbackRcvs_RewoundFrame",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 88
+        },
+        {
+          "name": "HitScan_MalformedPayload_NoCrash",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 135
+        },
+        {
+          "name": "PeerConnected_NoCrash",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 158
+        },
+        {
+          "name": "PeerDisconnected_NoCrash",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 167
+        },
+        {
+          "name": "OnShutdown_NoCrash",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_fps.cpp",
+          "line": 175
+        }
+      ]
+    },
+    {
+      "name": "RtsModule",
+      "tests": 10,
+      "testsuite": [
+        {
+          "name": "OnInit_ReturnsOk",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 48
+        },
+        {
+          "name": "OnInit_ResetsCurrentTurn",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 54
+        },
+        {
+          "name": "TurnCallback_NoFireAfter_OnePeerOfTwo",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 63
+        },
+        {
+          "name": "TurnCallback_FiresWhenAllPeersSubmit",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 81
+        },
+        {
+          "name": "TurnCallback_FiresExactlyOnce",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 105
+        },
+        {
+          "name": "TurnCallback_ContainsCommandData",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 131
+        },
+        {
+          "name": "GetCurrentTurn_IncrementsAfterTurn",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 162
+        },
+        {
+          "name": "DesyncCallback_FiresOnMismatch",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 181
+        },
+        {
+          "name": "DesyncCallback_DoesNotFireOnMatch",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 205
+        },
+        {
+          "name": "PeerDisconnected_AdvanceTurn",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_rts.cpp",
+          "line": 231
+        }
+      ]
+    },
+    {
+      "name": "MmoModule",
+      "tests": 11,
+      "testsuite": [
+        {
+          "name": "OnInit_ReturnsOk",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 44
+        },
+        {
+          "name": "AOIPeers_IsoPeerReturnsEmpty",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 52
+        },
+        {
+          "name": "SameCell_ReturnsOtherPeer",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 63
+        },
+        {
+          "name": "AOIPeers_NotIncludeSelf",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 78
+        },
+        {
+          "name": "AdjacentCell_ReturnsNeighbor",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 91
+        },
+        {
+          "name": "FarAwayPeer_NotReturned",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 110
+        },
+        {
+          "name": "CellCrossing_Updates",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 126
+        },
+        {
+          "name": "GetZonePeers_ReturnsCorrectZone",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 145
+        },
+        {
+          "name": "ZoneTransferCall_FiresOnZoneReq",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 170
+        },
+        {
+          "name": "MoveRpc_UpdatesAOIMembers",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 195
+        },
+        {
+          "name": "PeerDisconnect_RemovesFromAOI",
+          "file": "\/Users\/mykellspencer\/Documents\/GitHub\/Aegis\/cpp_core\/CoreTests\/test_mmo.cpp",
+          "line": 215
         }
       ]
     }
