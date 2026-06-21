@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "798TstJbX7E=",
+  "success": true,
+  "projectFilePath": "/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/Aegis.Managed.csproj",
+  "expectedPackageFiles": [
+    "/Users/mykellspencer/.nuget/packages/netstandard.library.ref/2.1.0/netstandard.library.ref.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

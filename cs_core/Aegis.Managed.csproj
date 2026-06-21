@@ -1,0 +1,41 @@
+
+<!--
+    * C# class library for the Aegis Engine Managed layer
+
+    * Target Framework: netstandard2.1
+        - compatible with Unity 2021+, .NET6+, and Unreal's C++/CLI 
+        - do not target net10.0 directly; Unity's runtime does not support the full .NET SDK
+    * AllowUnsafeBlocks: true
+        - Required for fixed-size buffer pinning in the invoke layer
+            > Native binding uses fixes-size buffering when passing managed byte arrays
+        - Compiler refuses to compile pointer operations without it
+    * Nullable: enable
+        - Enables C#'s 8+ nullable reference type annotations
+        - Helps catch null dereference bugs at compile time rather than runtime
+    * AssemblyName: Aegis.Managed
+        - Output DLL will be named Aegis.Managed.dll
+        - Unity: drop into Assets/Plugins/
+        - Unreal: reference from C++/CLI module
+-->
+
+<Project Sdk = "Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
+        <AssemblyName>Aegis.Managed</AssemblyName>
+        <RootNamespace>Aegis.Managed</RootNamespace>
+        <LangVersion>9.0</LangVersion>
+
+        <TreatWarningsAsErrors Condition = "'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
+
+        <!-- Human-readable metadata -->
+        <Version>1.0.0</Version>
+        <Authors>Aegis</Authors>
+        <Description>C# managed layer for the Aegis Engine multiplayer network library.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="SharpTests/**/*.cs"/>
+    </ItemGroup>
+</Project>
