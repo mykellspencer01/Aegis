@@ -16,7 +16,7 @@
 #include "../Serializer/BitRead.h"
 #include "../Serializer/BitWrite.h"
 
-using namespace NetEngine::Serializer;
+using namespace Aegis::Serializer;
 
 //! Basic round trip
 

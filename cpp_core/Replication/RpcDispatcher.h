@@ -25,7 +25,7 @@
 #include <mutex>
 #include <vector>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Replication {
 
     //RPC identifer type and rpc handler handler func signature
@@ -48,4 +48,4 @@ namespace Replication {
             mutable std::mutex t_mutex; // guard for t_handlers
     };
 } //namepsace Replication
-} //namespace NetEngine
+} //namespace Aegis

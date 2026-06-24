@@ -28,7 +28,7 @@
 #include <vector>
 #include <functional>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     constexpr uint16_t RPC_RTS_COMMANDS = 0x0301;
@@ -83,4 +83,4 @@ namespace Genres {
         void CheckCrcs(uint32_t turn);
     };
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

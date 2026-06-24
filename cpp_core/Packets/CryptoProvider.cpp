@@ -14,7 +14,7 @@
     #define NE_LOG(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Crypto {
     //Constructor/Destructor
 
@@ -154,4 +154,4 @@ namespace Crypto {
         #endif
     }
 } //namespace Crypto
-} //namespace NetEngine
+} //namespace Aegis

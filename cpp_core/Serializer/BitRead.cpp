@@ -2,7 +2,7 @@
 #include <cstring>
 #include <algorithm>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Serializer {
 
     BitReader::BitReader(const uint8_t* buffer, uint32_t bufferSize)
@@ -77,4 +77,4 @@ namespace Serializer {
     bool BitReader::HasFailed() const { return t_failed; }
     uint32_t BitReader::GetBitsRead() const { return t_bitIndex; }
 } //namespace Serializer
-} //namespace NetEngine
+} //namespace Aegis

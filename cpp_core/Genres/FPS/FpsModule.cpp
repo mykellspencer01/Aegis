@@ -10,7 +10,7 @@
     #define NE_LOG(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     FpsModule::FpsModule() : t_serverTime(0.0) {}
@@ -28,7 +28,7 @@ namespace Genres {
         t_serverTime += dt;
     }
 
-    void FpsModule::OnPacketReceived(PeerID sender, uint8_t channel, NetEngine::Serializer::BitReader& reader)
+    void FpsModule::OnPacketReceived(PeerID sender, uint8_t channel, Aegis::Serializer::BitReader& reader)
     {
         uint16_t rpcID = static_cast<uint16_t>(reader.ReadBits(16));
         if(rpcID == RPC_RPS_HIT_SCAN) HandleHitScan(sender, reader);
@@ -109,4 +109,4 @@ namespace Genres {
 
     //TODO: Send RPC_FPS_HIT_RESULT back to sender via ReliableChannel
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

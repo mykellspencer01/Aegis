@@ -8,9 +8,9 @@
 #include "../Serializer/BitWrite.h"
 #include <algorithm>
 
-using namespace NetEngine::Genres;
-using namespace NetEngine::Serializer;
-using namespace NetEngine;
+using namespace Aegis::Genres;
+using namespace Aegis::Serializer;
+using namespace Aegis;
 
 // * Helpers to build MMO_RPC_MOVE paylaod
 static uint32_t BuildMovePayload(uint8_t* buffer, uint32_t bufferSize, float x, float z)

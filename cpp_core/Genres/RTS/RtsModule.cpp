@@ -8,7 +8,7 @@
     #define NE_LOG(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     RtsModule::RtsModule() : t_currentTurn(0), t_expectedPeerCount(0) {}
@@ -128,4 +128,4 @@ namespace Genres {
         t_crcReports.erase(turn);
     }
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

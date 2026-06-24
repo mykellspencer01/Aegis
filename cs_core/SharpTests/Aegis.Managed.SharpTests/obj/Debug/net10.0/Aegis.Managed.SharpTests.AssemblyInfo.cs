@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Aegis.Managed.SharpTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc5c15d06d8e3d6197d19b419a42e0203e54fda1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d9709b921c3e533c2632410bbd08b852733da30")]
 [assembly: System.Reflection.AssemblyProductAttribute("Aegis.Managed.SharpTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Aegis.Managed.SharpTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

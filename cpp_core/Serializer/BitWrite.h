@@ -15,7 +15,7 @@
 #include <cstdint>
 #include <cassert>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Serializer{
 
     // * Class writes individual bits (and convenience values) into a fixed-size byte buffer
@@ -51,4 +51,4 @@ namespace Serializer{
             void FlushBytes();
     };
 } //namespace Serializer
-} //namespace NetEngine
+} //namespace Aegis

@@ -29,7 +29,7 @@
 #include <cstdint>
 #include <array>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Crypto {
 
     //AES-128 key in bytes
@@ -57,4 +57,4 @@ namespace Crypto {
             bool t_hasKey;
     };
 } //namespace Crypto
-} //namespace NetEngine
+} //namespace Aegis

@@ -15,7 +15,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Transport {
 
 // # of seq. nums tracked simultaneuously per direction
@@ -70,4 +70,4 @@ class AckManager // * One instance per user
 };
 
 } //namespace transport
-} //namespace NetEngine
+} //namespace Aegis

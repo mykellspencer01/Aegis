@@ -8,7 +8,7 @@
     #define NE_LOG(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     MmoModule::MmoModule() {}
@@ -141,4 +141,4 @@ namespace Genres {
     }
 
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

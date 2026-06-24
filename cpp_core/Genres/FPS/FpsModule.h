@@ -32,7 +32,7 @@
 #include <unordered_map>
 #include <cstring>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     //RPC ids reserved for fps module
@@ -90,4 +90,4 @@ namespace Genres {
             void HandleHitScan(PeerID sender, Serializer::BitReader& reader); //processes incoming hitscan from client
     };
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

@@ -9,7 +9,7 @@
     #define NE_LOG(fmt, ...) ((void) 0)
 #endif
 
-namespace NetEngine{
+namespace Aegis{
 namespace Replication{
 
     SnapshotManager::SnapshotManager()
@@ -195,4 +195,4 @@ namespace Replication{
         return nullptr;
     }
 } //namespace Replication
-} //namespace NetEngine
+} //namespace Aegis

@@ -30,7 +30,7 @@
 #include <memory>
 #include <unordered_map>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     //all methods are called from the engine's ntwrk thread
@@ -69,4 +69,4 @@ namespace Genres {
 
     
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

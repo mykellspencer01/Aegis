@@ -30,7 +30,7 @@
 #include <functional>
 #include <memory>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Replication {
 
     using ObjectID = uint32_t;
@@ -113,4 +113,4 @@ namespace Replication {
             
     };
 } //namespace Replication
-} //namespace NetEngine
+} //namespace Aegis

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(NetEngine LANGUAGES CXX VERSION 1.0.0)
+project(Aegis LANGUAGES CXX VERSION 1.0.0)
 
 
 # Global Standard - C++17 required for std::optional, structured bindings, and inline variables
@@ -80,9 +80,9 @@ set(NETENGINE_SOURCES
 # Shared library target
 # SHARED keyword causes CMake to build a .dll/.so/.dylib
 # The C# DLLimport will load this at runtime
-add_library(NetEngine_Core SHARED ${NETENGINE_SOURCES})
+add_library(Aegis_Core SHARED ${NETENGINE_SOURCES})
 
-target_include_directories(NetEngine_Core PUBLIC
+target_include_directories(Aegis_Core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core
     ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Transport
     ${CMAKE_CURRENT_SOURCE_DIR}/../cpp_core/Serializer
@@ -95,15 +95,15 @@ target_include_directories(NetEngine_Core PUBLIC
 )
 
 if(NETENGINE_USE_OPENSSL)
-    target_link_libraries(NetEngine_Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
+    target_link_libraries(Aegis_Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 endif()
 
-target_link_libraries(NetEngine_Core PRIVATE ${PLATFORM_LIBS})
+target_link_libraries(Aegis_Core PRIVATE ${PLATFORM_LIBS})
 
 
 # Export all symbols on Windows (needed for DLLimport to resolve)
 if(WIN32)
-    set_target_properties(NetEngine_Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    set_target_properties(Aegis_Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
 
@@ -114,7 +114,7 @@ if(NETENGINE_BUILD_TESTS)
     add_subdirectory(../cpp_core/CoreTests tester_build)
 endif()
 
-message(STATUS "NetEngine ${PROJECT_VERSION} configured")
+message(STATUS "Aegis ${PROJECT_VERSION} configured")
 message(STATUS "OpenSSL: ${NETENGINE_USE_OPENSSL}")
 message(STATUS "Logging: ${NETENGINE_ENABLE_LOGGING}")
 message(STATUS "Tests: ${NETENGINE_BUILD_TESTS}")

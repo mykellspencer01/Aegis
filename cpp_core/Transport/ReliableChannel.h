@@ -30,7 +30,7 @@
 #include <functional>
 #include <memory>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Transport {
 
     //* Fully decoded packet delivered to the engine's receive callback 
@@ -91,4 +91,4 @@ namespace Transport {
             uint8_t t_sendBuffer[NETENGINE_MAX_PACKET_SIZE];
     };
 } // namespace Transport
-} // namespace NetEngine
+} // namespace Aegis

@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdio>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Serializer{
 
     BitWriter::BitWriter(uint8_t* buffer, uint32_t bufferSize)

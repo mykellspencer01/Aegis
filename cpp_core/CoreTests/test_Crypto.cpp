@@ -6,8 +6,8 @@
 #include "../Packets/CryptoProvider.h"
 #include <cstring>
 
-using namespace NetEngine::Crypto;
-using namespace NetEngine;
+using namespace Aegis::Crypto;
+using namespace Aegis;
 
 //!* Fixed 128-bit test key (dont use in production)
 static const uint8_t TEST_KEY[AES128_KEY_BYTES] = {
@@ -31,7 +31,7 @@ TEST(CryptoProvider, RoundTrip_BasicPayload)
     CryptoProvider cp;
     cp.SetSeshKey(TEST_KEY);
 
-    const char* text = "NetEngine Packet Payload";
+    const char* text = "Aegis Packet Payload";
     uint32_t textLength = static_cast<uint32_t>(strlen(text));
     uint8_t cypher[256] {};
     uint32_t cypherLength = 0;

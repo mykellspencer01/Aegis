@@ -1,5 +1,0 @@
-if(EXISTS "/Users/mykellspencer/Documents/GitHub/Aegis/Build/build/tester_build/NetEngineTests[1]_tests.cmake")
-  include("/Users/mykellspencer/Documents/GitHub/Aegis/Build/build/tester_build/NetEngineTests[1]_tests.cmake")
-else()
-  add_test(NetEngineTests_NOT_BUILT NetEngineTests_NOT_BUILT)
-endif()

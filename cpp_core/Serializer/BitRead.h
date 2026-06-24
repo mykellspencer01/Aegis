@@ -10,7 +10,7 @@
 #include <cstdint>
 #include <cstring>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Serializer {
 
     class BitReader {
@@ -37,4 +37,4 @@ namespace Serializer {
             void Refill();
     };
 } //namespace Serializer
-} //namespace NetEngine
+} //namespace Aegis

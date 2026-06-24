@@ -35,7 +35,7 @@
 #endif
 
 
-namespace NetEngine {
+namespace Aegis {
 namespace Transport {
 
 //* From/to address in send/receive calls; mapped by C# PeerEndpoint struct
@@ -94,4 +94,4 @@ class UDPSocket
 };
 
 } //namespace Transport
-} //naemspace NetEngine
+} //naemspace Aegis

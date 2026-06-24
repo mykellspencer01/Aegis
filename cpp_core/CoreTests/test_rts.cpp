@@ -7,9 +7,9 @@
 #include "../Serializer/BitRead.h"
 #include "../Serializer/BitWrite.h"
 
-using namespace NetEngine::Genres;
-using namespace NetEngine::Serializer;
-using namespace NetEngine;
+using namespace Aegis::Genres;
+using namespace Aegis::Serializer;
+using namespace Aegis;
 
 // * Helper func to build RPC_RTS_COMMANDS payload
 static uint32_t BuildCommandsPayload(

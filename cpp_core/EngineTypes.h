@@ -10,7 +10,7 @@
         - struct marshalling on bridge invocations
         - strings are represented as const char* at ABI bounds
             + std::string used internally only
-        - NetEngine API will expand to the dllexport and dllimport attribs
+        - Aegis API will expand to the dllexport and dllimport attribs
             + Dictates if a symbol is being exposed by a library or consumed by an executable
             + dllexport is inside the DLL project source code; dllimport is client-side source code
 */
@@ -127,7 +127,7 @@ enum class GenreID : uint16_t
 };
 
 //identifies which game engine the C# layer is driving
-//Passed to NetEngine_Init so engine-specific adapter paths are selected
+//Passed to Aegis_Init so engine-specific adapter paths are selected
 
 enum class EngineType : uint16_t
 {

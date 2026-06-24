@@ -7,7 +7,7 @@
     #define NE_LOG(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Replication {
 
     NetResult RpcDispatcher::RegisterRpc(RpcID id , RpcHandler handler)
@@ -62,4 +62,4 @@ namespace Replication {
         t_handlers.erase(id);
     }
 } //namespace Replication
-} //namespace NetEngine
+} //namespace Aegis

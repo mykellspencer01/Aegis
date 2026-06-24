@@ -20,8 +20,8 @@
 #include <atomic>
 #include <cstring>
 
-using namespace NetEngine::Transport;
-using namespace NetEngine;
+using namespace Aegis::Transport;
+using namespace Aegis;
 
 static constexpr int LOOPBACK_WAIT_MS = 15; //ms to wait for loopback delivery before calling Tick
 

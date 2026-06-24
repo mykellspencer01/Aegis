@@ -20,7 +20,7 @@
 #endif
 
 
-namespace NetEngine {
+namespace Aegis {
 namespace Transport{
 
 // * Constructor/Destructor

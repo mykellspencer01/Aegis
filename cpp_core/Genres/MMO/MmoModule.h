@@ -23,7 +23,7 @@
 #include <functional>
 #include <cmath>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     constexpr uint16_t RPC_MMO_MOVE = 0x0401;
@@ -92,4 +92,4 @@ namespace Genres {
             void HandleZoneRequest(PeerID sender, Serializer::BitReader& reader);
     };
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

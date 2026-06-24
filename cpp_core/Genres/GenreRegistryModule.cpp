@@ -7,7 +7,7 @@
     #define NE_LOG_GMR(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Genres {
 
     RegistryModule& RegistryModule::Instance()
@@ -72,4 +72,4 @@ namespace Genres {
         for(auto& [k, m] : t_modules) m -> OnPeerDisconnected(peer);
     }
 } //namespace Genres
-} //namespace NetEngine
+} //namespace Aegis

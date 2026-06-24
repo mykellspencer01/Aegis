@@ -7,9 +7,9 @@
 #include "../Serializer/BitWrite.h"
 #include "../Serializer/BitRead.h"
 
-using namespace NetEngine::Replication;
-using namespace NetEngine::Serializer;
-using namespace NetEngine;
+using namespace Aegis::Replication;
+using namespace Aegis::Serializer;
+using namespace Aegis;
 
 //! Register RPC validation 
 

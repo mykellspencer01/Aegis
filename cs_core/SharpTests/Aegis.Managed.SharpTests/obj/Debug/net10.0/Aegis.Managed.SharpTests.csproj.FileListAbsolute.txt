@@ -159,3 +159,4 @@
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/SharpTests/Aegis.Managed.SharpTests/obj/Debug/net10.0/Aegis.Managed.SharpTests.pdb
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/SharpTests/Aegis.Managed.SharpTests/obj/Debug/net10.0/Aegis.Managed.SharpTests.genruntimeconfig.cache
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/SharpTests/Aegis.Managed.SharpTests/obj/Debug/net10.0/ref/Aegis.Managed.SharpTests.dll
+/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/SharpTests/Aegis.Managed.SharpTests/bin/Debug/net10.0/libAegis_Core.dylib

@@ -10,7 +10,7 @@
     #define NE_LOG(fmt, ...) ((void)0)
 #endif
 
-namespace NetEngine {
+namespace Aegis {
 namespace Transport {
 
     //Constructor/Destructor
@@ -290,6 +290,6 @@ namespace Transport {
         if(t_callback) t_callback(pkt);
     }
 } //namespace Transport
-} //namespace NetEngine
+} //namespace Aegis
 
 

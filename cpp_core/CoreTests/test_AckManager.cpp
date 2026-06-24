@@ -14,7 +14,7 @@
 #include <gtest/gtest.h>
 #include "../../Transport/AckManager.h"
 
-using namespace NetEngine::Transport;
+using namespace Aegis::Transport;
 
 //! Track Sent & Pending Retransmits
 

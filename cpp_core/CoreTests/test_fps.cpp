@@ -7,9 +7,9 @@
 #include "../Serializer/BitWrite.h"
 #include "../Serializer/BitRead.h"
 
-using namespace NetEngine::Genres;
-using namespace NetEngine::Serializer;
-using namespace NetEngine;
+using namespace Aegis::Genres;
+using namespace Aegis::Serializer;
+using namespace Aegis;
 
 //* Helper to build a hitscan payload
 static uint32_t BuildHitscanPayload(

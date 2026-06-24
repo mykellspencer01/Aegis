@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /Users/mykellspencer/Documents/GitHub/Aegis/Build/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	/opt/homebrew/bin/ctest $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -94,51 +84,6 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"gmock\" \"gtest\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/opt/homebrew/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/opt/homebrew/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -172,89 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named NetEngine_Core
+# Target rules for targets named Aegis_Core
 
 # Build rule for target.
-NetEngine_Core: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 NetEngine_Core
-.PHONY : NetEngine_Core
+Aegis_Core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Aegis_Core
+.PHONY : Aegis_Core
 
 # fast build rule for target.
-NetEngine_Core/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/build
-.PHONY : NetEngine_Core/fast
-
-#=============================================================================
-# Target rules for targets named NetEngineTests
-
-# Build rule for target.
-NetEngineTests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 NetEngineTests
-.PHONY : NetEngineTests
-
-# fast build rule for target.
-NetEngineTests/fast:
-	$(MAKE) $(MAKESILENT) -f tester_build/CMakeFiles/NetEngineTests.dir/build.make tester_build/CMakeFiles/NetEngineTests.dir/build
-.PHONY : NetEngineTests/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+Aegis_Core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/build
+.PHONY : Aegis_Core/fast
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.o
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.i
@@ -262,7 +142,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.i: Users/mykel
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.s
@@ -270,7 +150,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.s: Users/mykel
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.o
@@ -278,7 +158,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.o: User
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.i
@@ -286,7 +166,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.i: User
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.s
@@ -294,7 +174,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.s: User
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/FPS/FpsModule.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.o
@@ -302,7 +182,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.o
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.i
@@ -310,7 +190,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.i
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.s
@@ -318,7 +198,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.s
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/GenreRegistryModule.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.o
@@ -326,7 +206,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.o: User
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.i
@@ -334,7 +214,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.i: User
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.s
@@ -342,7 +222,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.s: User
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/MMO/MmoModule.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.o
@@ -350,7 +230,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.o: User
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.i
@@ -358,7 +238,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.i: User
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.s
@@ -366,7 +246,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.s: User
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Genres/RTS/RtsModule.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.o
@@ -374,7 +254,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.o: Us
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.i
@@ -382,7 +262,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.i: Us
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.s
@@ -390,7 +270,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.s: Us
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Packets/CryptoProvider.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.o
@@ -398,7 +278,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.o:
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.i
@@ -406,7 +286,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.i:
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.s
@@ -414,7 +294,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.s:
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/RpcDispatcher.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.o
@@ -422,7 +302,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.o: U
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.i
@@ -430,7 +310,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.i: U
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.s
@@ -438,7 +318,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.s: U
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Replication/SnapManager.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.o
@@ -446,7 +326,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.o: Users/
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.i
@@ -454,7 +334,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.i: Users/
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.s
@@ -462,7 +342,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.s: Users/
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitRead.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.o
@@ -470,7 +350,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.o: Users
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.i
@@ -478,7 +358,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.i: Users
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.s
@@ -486,7 +366,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.s: Users
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Serializer/BitWrite.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.o
@@ -494,7 +374,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.o: User
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.i
@@ -502,7 +382,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.i: User
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.s
@@ -510,7 +390,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.s: User
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/AckManager.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.o
@@ -518,7 +398,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.o:
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.i
@@ -526,7 +406,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.i:
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.s
@@ -534,7 +414,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.s:
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/ReliableChannel.cpp.s
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.o: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.o
@@ -542,7 +422,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.o: Users
 
 # target to build an object file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.o
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.o
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.i: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.i
@@ -550,7 +430,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.i: Users
 
 # target to preprocess a source file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.i
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.i
 
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.s: Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.s
@@ -558,7 +438,7 @@ Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.s: Users
 
 # target to generate assembly for a file
 Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NetEngine_Core.dir/build.make CMakeFiles/NetEngine_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Aegis_Core.dir/build.make CMakeFiles/Aegis_Core.dir/Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.s
 .PHONY : Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/Transport/UDPSocket.cpp.s
 
 # Help Target
@@ -568,18 +448,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... NetEngineTests"
-	@echo "... NetEngine_Core"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_main"
+	@echo "... Aegis_Core"
 	@echo "... Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.o"
 	@echo "... Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.i"
 	@echo "... Users/mykellspencer/Documents/GitHub/Aegis/cpp_core/EngineExports.s"

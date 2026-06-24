@@ -10,7 +10,7 @@
 #include <cstring>
 #include <algorithm>
 
-namespace NetEngine {
+namespace Aegis {
 namespace Transport {
 
     AckManager::AckManager()
@@ -135,4 +135,4 @@ namespace Transport {
     }
     
 } //namespace Transport
-} //namespace NetEngine
+} //namespace Aegis

@@ -5,9 +5,9 @@
 #include <gtest/gtest.h>
 #include "../Replication/SnapshotManagement.h"
 
-using namespace NetEngine::Replication;
-using namespace NetEngine::Serializer;
-using namespace NetEngine;
+using namespace Aegis::Replication;
+using namespace Aegis::Serializer;
+using namespace Aegis;
 
 //* Minimal Hydra implementation for testing
 
