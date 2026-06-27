@@ -26,6 +26,13 @@ static std::unique_ptr<Aegis::Genres::FpsModule> e_fps;
 static std::unique_ptr<Aegis::Genres::RtsModule> e_rts; 
 static std::unique_ptr<Aegis::Genres::MmoModule> e_mmo;
 
+// Managed receive callback bridge
+using ManagedReceivedCallback = void(*)(
+    uint64_t peerID, uint8_t channelID,
+    const uint8_t* payload, uint32_t payloadLength);
+
+static ManagedReceivedCallback e_managedCallback = nullptr;
+
 //Internal receive callback
 static void OnPacketReceived(const Aegis::Transport::IncomingPacket& pkt)
 {
@@ -42,6 +49,10 @@ static void OnPacketReceived(const Aegis::Transport::IncomingPacket& pkt)
             .Get(static_cast<GenreID>(pkt.channelID));
         if(mod) mod -> OnPacketReceived(pkt.fromPeer, pkt.channelID, reader);
     }
+
+    //forward each rcvd packet to managed layer, regardless of channel
+    if(e_managedCallback != nullptr)
+        e_managedCallback(pkt.fromPeer, pkt.channelID, pkt.payload, pkt.payloadLength);
 }
 
 // * Exported C ABI - funcs C# DLLimport binds to
@@ -68,6 +79,11 @@ extern "C" {
 
         e_initialized = true;
         return static_cast<int32_t>(NetResult::Ok);
+    }
+
+    NETENGINE_API void Aegis_SetReceiveCallback(ManagedReceivedCallback callback)
+    {
+        e_managedCallback = callback;
     }
 
     NETENGINE_API void Aegis_Shutdown()

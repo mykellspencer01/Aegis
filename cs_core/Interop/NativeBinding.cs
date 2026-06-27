@@ -3,6 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace Aegis.Managed.Interop
 {
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    internal delegate void NativeReceivedCallback(
+        ulong peerID, byte channelID, IntPtr payload, uint payloadLength
+    );
+
     internal static class NativeBindings
     {
         #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
@@ -57,5 +62,8 @@ namespace Aegis.Managed.Interop
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint Aegis_GetLatestTick();
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void Aegis_SetReceiveCallback(NativeReceivedCallback callback);
     }
 }

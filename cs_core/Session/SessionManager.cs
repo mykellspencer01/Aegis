@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Aegis.Managed.Interop;
 
 namespace Aegis.Managed.Session
@@ -26,9 +27,11 @@ namespace Aegis.Managed.Session
         public event Action<ulong>? OnPeerJoined;
         public event Action<ulong>? OnPeerLeft;
         public event Action? OnSessionEnded;
+        public event Action<ulong, byte, byte[]>? OnDataReceived;
 
         // * Private State
         private readonly Dictionary<ulong, string> _peers = new();
+        private NativeReceivedCallback? _nativeReceivedCallback;
 
         // * Lifecycle
         public NetResult Host(ushort port = 0, byte engineType = 0)
@@ -43,9 +46,20 @@ namespace Aegis.Managed.Session
                 LocalPort = NativeBindings.Aegis_GetLocalPort();
                 SessionID = Guid.NewGuid().ToString("N")[..8].ToUpperInvariant();
                 State = SessionState.Hosting;
-            }
 
+                _nativeReceivedCallback = OnNativePacketReceived;
+                NativeBindings.Aegis_SetReceiveCallback(_nativeReceivedCallback);
+            }
             return result;
+        }
+
+        private void OnNativePacketReceived(
+            ulong peerID, byte channelID, IntPtr payload, uint payloadLength
+        )
+        {
+            byte[] data = new byte[payloadLength];
+            if(payloadLength > 0) Marshal.Copy(payload, data, 0, (int)payloadLength);
+            OnDataReceived?.Invoke(peerID, channelID, data);
         }
 
         public NetResult Add_Peer(ulong peerID, string ip, ushort port)
@@ -93,6 +107,9 @@ namespace Aegis.Managed.Session
         {
             if(State == SessionState.Idle || State == SessionState.Disconnected) return;
 
+            NativeBindings.Aegis_SetReceiveCallback(null!);
+            _nativeReceivedCallback = null;
+            
             NativeBindings.Aegis_Shutdown();
             _peers.Clear();
             LocalPort = 0;

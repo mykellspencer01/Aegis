@@ -1,10 +1,10 @@
+/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/bin/Debug/netstandard2.1/Aegis.Managed.deps.json
+/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/bin/Debug/netstandard2.1/Aegis.Managed.dll
+/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/bin/Debug/netstandard2.1/Aegis.Managed.pdb
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.GeneratedMSBuildEditorConfig.editorconfig
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.AssemblyInfoInputs.cache
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.AssemblyInfo.cs
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.csproj.CoreCompileInputs.cache
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.sourcelink.json
-/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/bin/Debug/netstandard2.1/Aegis.Managed.deps.json
-/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/bin/Debug/netstandard2.1/Aegis.Managed.dll
-/Users/mykellspencer/Documents/GitHub/Aegis/cs_core/bin/Debug/netstandard2.1/Aegis.Managed.pdb
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.dll
 /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/obj/Debug/netstandard2.1/Aegis.Managed.pdb
