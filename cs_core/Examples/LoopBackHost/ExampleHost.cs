@@ -9,12 +9,15 @@
 
 using Aegis.Managed.Session;
 using Aegis.Managed.Interop;
+using Aegis.Managed.EngineAdapters;
 using System;
 
 const ushort hostPort = 7777;
 const ushort clientPort = 7778;
 const ulong clientPeerID= 2;
+
 var session = new SessionManager();
+var adapter = new CustomAdapter();
 
 // Clean native shutdown
 Console.CancelKeyPress += (_, e) =>
@@ -35,6 +38,7 @@ Console.WriteLine($"[Host] Add_Peer(client) result: {addClientResult}");
 
 Console.WriteLine($"[Host] Listening on Port: {session.LocalPort}," +
     $"Session ID: {session.SessionID}");
+Console.WriteLine($"[Host] Driven by {adapter.engineName} adapter");
 Console.WriteLine("[Host] Waiting for packets from LoopBackClient... (Ctrl+C to stop)");
 
 session.OnDataReceived += (peerID, channelID, data) =>

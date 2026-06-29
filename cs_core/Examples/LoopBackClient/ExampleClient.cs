@@ -15,15 +15,18 @@
 
 using Aegis.Managed.Session;
 using Aegis.Managed.Interop;
+using Aegis.Managed.EngineAdapters;
 using System;
 
-const string hostIP = "127.0.01";
+const string hostIP = "127.0.0.1";
 const ushort hostPort = 7777;
 const ulong hostPeerID = 1;
 const ushort clientPort = 7778;
 
 var session = new SessionManager();
-NetResult initResult = session.Host(clientPort);
+var adapter = new CustomAdapter();
+
+NetResult initResult = session.Host(clientPort, adapter.engineTypeByte);
 
 if(initResult != NetResult.Ok)
 {
@@ -42,6 +45,7 @@ if(addPeerResult != NetResult.Ok)
 }
 
 Console.WriteLine($"[Client] Registered host peer at {hostIP}:{hostPort}");
+Console.WriteLine($"[Client] Driven by {adapter.engineName} adapter.");
 
 // simple recognizable payload
 byte[] payload = {0x12, 0x34, 0x56, 0x78};
@@ -49,13 +53,19 @@ byte[] payload = {0x12, 0x34, 0x56, 0x78};
 NetResult sendResult = session.SendRaw(hostPeerID, channelID: 0, payload);
 Console.WriteLine($"[Client] SendRaw() result: {sendResult}");
 
+// Wire the adapter, drive it manually for a few frames to flush out the send
+adapter.RegisterTickCallback(session.Tick);
+adapter.Start();
+
+
 // Tick a few times to give native transport a chance to flush 
 // datagram before shutdown
 for(int i = 0; i < 5; i++)
 {
-    session.Tick(0.016);
+    adapter.RunFrame();
     System.Threading.Thread.Sleep(16);
 }
 
+adapter.OnEngineShutdown();
 session.Shutdown();
 Console.WriteLine("[Client] Done.");
