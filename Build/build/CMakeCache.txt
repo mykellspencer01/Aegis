@@ -120,7 +120,7 @@ CMAKE_OBJCOPY:FILEPATH=CMAKE_OBJCOPY-NOTFOUND
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Build architectures for OSX
-CMAKE_OSX_ARCHITECTURES:STRING=
+CMAKE_OSX_ARCHITECTURES:STRING=x86_64;arm64
 
 //Minimum OS X version to target for deployment (at runtime); newer
 // APIs weak linked. Set to empty string for default value.
@@ -235,16 +235,16 @@ NETENGINE_ENABLE_LOGGING:BOOL=ON
 NETENGINE_USE_OPENSSL:BOOL=ON
 
 //Path to a library.
-OPENSSL_CRYPTO_LIBRARY:FILEPATH=/opt/homebrew/opt/openssl@3/lib/libcrypto.dylib
+OPENSSL_CRYPTO_LIBRARY:FILEPATH=/tmp/universal_openssl/lib/libcrypto.3.dylib
 
 //Path to a file.
-OPENSSL_INCLUDE_DIR:PATH=/opt/homebrew/opt/openssl@3/include
+OPENSSL_INCLUDE_DIR:PATH=/tmp/universal_openssl/include
 
 //No help, variable specified on the command line.
-OPENSSL_ROOT_DIR:UNINITIALIZED=/opt/homebrew/opt/openssl@3
+OPENSSL_ROOT_DIR:UNINITIALIZED=/tmp/universal_openssl
 
 //Path to a library.
-OPENSSL_SSL_LIBRARY:FILEPATH=/opt/homebrew/opt/openssl@3/lib/libssl.dylib
+OPENSSL_SSL_LIBRARY:FILEPATH=/tmp/universal_openssl/lib/libssl.3.dylib
 
 //Arguments to supply to pkg-config
 PKG_CONFIG_ARGN:STRING=
@@ -393,7 +393,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding OpenSSL
-FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/opt/homebrew/opt/openssl@3/lib/libcrypto.dylib][/opt/homebrew/opt/openssl@3/include][ ][v3.6.2()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/tmp/universal_openssl/lib/libcrypto.3.dylib][/tmp/universal_openssl/include][ ][v3.6.2()]
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
 OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENSSL_INCLUDE_DIR
