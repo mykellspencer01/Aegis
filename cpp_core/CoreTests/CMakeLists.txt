@@ -23,7 +23,7 @@ add_executable(NetEngineTests
 
 target_link_libraries(NetEngineTests
     PRIVATE
-    NetEngine_Core
+    Aegis_Core
     gtest
     gtest_main
 )

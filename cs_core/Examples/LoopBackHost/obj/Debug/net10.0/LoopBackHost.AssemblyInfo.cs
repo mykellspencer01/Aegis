@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LoopBackHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d4cec7833ac1727455eef8e2820761ef6d0af7d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42a3d50c9c57b8347cf7612a0e3e839f95bb8c05")]
 [assembly: System.Reflection.AssemblyProductAttribute("LoopBackHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LoopBackHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

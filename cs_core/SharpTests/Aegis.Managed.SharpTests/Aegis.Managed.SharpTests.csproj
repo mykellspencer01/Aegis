@@ -21,7 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
+
+  <!-- Now the project can run on all 3 platforms-->
     <None Include="../../../Build/build/lib/libAegis_Core.dylib" Condition="Exists('../../../Build/build/lib/libAegis_Core.dylib')">  
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="../../../Build/build/lib/libAegis_Core.dylib" Condition="Exists('../../../Build/build/lib/libAegis_Core.so')">  
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="../../../Build/build/lib/libAegis_Core.dylib" Condition="Exists('../../../Build/build/lib/Aegis_Core.dll')">  
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <ProjectReference Include="..\..\Aegis.Managed.csproj" />

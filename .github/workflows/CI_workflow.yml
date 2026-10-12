@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  native:
+    name: C++ core (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install OpenSSL (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libssl-dev
+
+      - name: Install OpenSSL (Windows)
+        if: runner.os == 'Windows'
+        run: choco install openssl -y --no-progress
+
+      - name: Install OpenSSL (macOS)
+        if: runner.os == 'macOS'
+        run: brew install openssl@3
+
+      - name: Configure
+        shell: bash
+        run: |
+          EXTRA=""
+          if [ "$RUNNER_OS" = "macOS" ]; then EXTRA="-DOPENSSL_ROOT_DIR=$(brew --prefix openssl@3)"; fi
+          if [ "$RUNNER_OS" = "Windows" ]; then EXTRA="-DOPENSSL_ROOT_DIR=C:/Program Files/OpenSSL"; fi
+          cmake -S Build -B build -DCMAKE_BUILD_TYPE=Release -DNETENGINE_BUILD_TESTS=ON -DNETENGINE_ENABLE_LOGGING=OFF $EXTRA
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Upload native library
+        uses: actions/upload-artifact@v4
+        with:
+          name: aegis-core-${{ runner.os }}
+          path: |
+            build/lib/
+            build/bin/Aegis_Core.dll
+            build/Release/Aegis_Core.dll
+          if-no-files-found: warn
+
+  managed:
+    name: C# layer (ubuntu)
+    runs-on: ubuntu-latest
+    needs: native
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Install OpenSSL headers
+        run: sudo apt-get update && sudo apt-get install -y libssl-dev
+      - name: Build native library
+        run: cmake -S Build -B Build/build -DCMAKE_BUILD_TYPE=Release -DNETENGINE_ENABLE_LOGGING=OFF && cmake --build Build/build --parallel
+      - name: Run NUnit tests
+        env:
+          LD_LIBRARY_PATH: ${{ github.workspace }}/Build/build/lib
+        run: dotnet test cs_core/SharpTests/Aegis.Managed.SharpTests/Aegis.Managed.SharpTests.csproj --configuration Release 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("C# managed layer for the Aegis Engine multiplayer network library.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b17fb4bcaee6802409f7a961af8401d5b7e812d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42a3d50c9c57b8347cf7612a0e3e839f95bb8c05")]
 [assembly: System.Reflection.AssemblyProductAttribute("Aegis.Managed")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Aegis.Managed")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,8 @@
+build/
+Build/build/
+UnityValidation/
+cs_core/obj/
+cs_core/bin/
+**/bin/
+**/obj/
+.git/

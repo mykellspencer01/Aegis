@@ -49,7 +49,7 @@ namespace Replication {
 
     //* Snapshot - serialized world state
     struct ObjectSnapshooter {
-        ObjectID ObjectID; // which object
+        Replication::ObjectID ObjectID; // which object ("Replication::" for portibility fixing with CLANG)
         uint8_t data[NETENGINE_MAX_PACKET_SIZE]; //serialized bytes
         uint32_t dataLength; // valid byte count
     };
@@ -61,7 +61,7 @@ namespace Replication {
 
     //* Delta Packet - compact diff between the two snapshots
     struct ObjectDelta {
-        ObjectID ObjectID;
+        Replication::ObjectID ObjectID;
         bool isNew;
         bool isDeleted;
         uint8_t data[NETENGINE_MAX_PACKET_SIZE]; // delta payload bytes

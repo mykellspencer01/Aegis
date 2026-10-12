@@ -27,6 +27,7 @@
 #pragma once
 
 #include "GenreModule.h"
+#include <functional>
 #include <deque>
 #include <vector>
 #include <unordered_map>

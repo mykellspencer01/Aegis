@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = Aegis.Managed
-build_property.ProjectDir = /Users/mykellspencer/Documents/GitHub/Aegis/cs_core/
+build_property.ProjectDir = C:\Users\kille\OneDrive\Documents\Projects\Aegis\cs_core\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
