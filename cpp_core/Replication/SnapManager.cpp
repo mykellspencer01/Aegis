@@ -1,6 +1,8 @@
 #include "SnapshotManagement.h"
 #include <cstring>
 #include <algorithm>
+#include <unordered_set>
+#include <unordered_map>
 #include <cstdio>
 
 #ifdef NETENGINE_LOGGING
@@ -189,10 +191,9 @@ namespace Replication{
         // w/o: caller passing tick == 0 would hit a zero-init slot and rcv a ptr to trash data
         if(t_historyCount == 0) return nullptr;
 
-        for(uint32_t i = 0; i < SNAPSHOT_HIST; ++i)
-            if(t_history[i].tick == tick) return &t_history[i];
-        
-        return nullptr;
+       const Snapshooter& slot = t_history[tick % SNAPSHOT_HIST];
+       if(slot.tick == tick) return &slot;
+       return nullptr;
     }
 } //namespace Replication
 } //namespace Aegis

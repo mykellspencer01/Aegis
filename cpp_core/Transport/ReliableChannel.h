@@ -87,6 +87,7 @@ namespace Transport {
             mutable std::mutex t_mutex; 
             bool t_initialized;
             double t_rttThreshold;
+            double t_now = 0.0; // last time passed to Tick(); timestamps sends for retransmit tracking
             
             uint8_t t_sendBuffer[NETENGINE_MAX_PACKET_SIZE];
     };

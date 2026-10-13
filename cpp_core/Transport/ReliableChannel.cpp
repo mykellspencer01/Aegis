@@ -113,7 +113,7 @@ namespace Transport {
 
         // TODO: Build packet can encrypt + compress here on later implementations
         //write a minimal header
-        uint32_t packetLength = BuildPacket(state, channelID, reliable, data, length, t_sendBuffer, 0.0);
+        uint32_t packetLength = BuildPacket(state, channelID, reliable, data, length, t_sendBuffer, t_now);
         int32_t sent = t_socket.Send(state.endpoint, t_sendBuffer, packetLength);
         return (sent >= 0) ? NetResult::Ok : NetResult::SocketError;
     }
@@ -122,6 +122,9 @@ namespace Transport {
     void ReliableChannel::Tick(double currentTime)
     {
         if(!t_initialized) return;
+
+        std::lock_guard<std::mutex> lk(t_mutex);
+        t_now = currentTime;
 
         static uint8_t recvBuffer[NETENGINE_MAX_PACKET_SIZE];
 
@@ -201,6 +204,10 @@ namespace Transport {
         uint32_t safeLength = std::min(payloadLength, static_cast<uint32_t>(NETENGINE_MAX_PACKET_SIZE - sizeof(PacketHeader)));
         std::memcpy(outBuffer + offset, payload, safeLength);
         offset += safeLength;
+
+        //Consumes seq # used in the header
+        if(reliable) peer.manager.TrackSent(outBuffer, offset, currentTime); // reliable packets stored for retransmission
+        else peer.manager.AdvanceOutSequence();
 
         return offset;
 

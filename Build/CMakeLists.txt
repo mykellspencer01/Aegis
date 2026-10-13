@@ -14,6 +14,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Options toggled at configure time via -DOPTION=ON/OFF
 option(NETENGINE_BUILD_TESTS "Build unit tests (requires GoogleTest)" OFF)
+option(NETENGINE_BUILD_BENCHMARKS "Build performance benchmarks" OFF)
 option(NETENGINE_USE_OPENSSL "Use OPENSSL for AES-128/HMAC Crypto" ON)
 option(NETENGINE_ENABLE_LOGGING "Enable internal debug logging" ON)
 

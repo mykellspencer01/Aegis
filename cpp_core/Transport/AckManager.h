@@ -43,6 +43,7 @@ class AckManager // * One instance per user
         
         // * Incoming Side
         void RecordReceived(uint16_t sequence);
+        void AdvanceOutSequence(); //consume a seq # for a packet that does not need retransmit tracking
         bool IsDuplicate(uint16_t sequence) const;
 
         // * Accessors for building outgoing packet headers

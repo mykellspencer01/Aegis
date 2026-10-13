@@ -88,6 +88,8 @@ namespace Transport {
         return result;    
     }
 
+    void AckManager::AdvanceOutSequence() { ++t_nextOutSequence; }
+
     //Incoming
     void AckManager::RecordReceived(uint16_t sequence)
     {

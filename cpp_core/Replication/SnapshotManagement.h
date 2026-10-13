@@ -55,7 +55,7 @@ namespace Replication {
     };
 
     struct Snapshooter {
-        uint32_t tick; //server tick #
+        uint32_t tick = 0xFFFFFFFFu; //server tick #; sentinel marks an unwritten slot
         std::vector<ObjectSnapshooter> objects; //one entry per registered object
     };
 

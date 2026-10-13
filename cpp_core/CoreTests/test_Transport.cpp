@@ -96,3 +96,22 @@ TEST(ReliableChannel, Loopback_UnreliableSend_CallbackFires)
     b_chan.Shutdown();
 }
 
+//! Regression: every pakcet used to carry seq 0, rcvr dropped all but the first as dupes
+
+TEST(ReliableChannel, ManySequentialPackets_AllDelivered)
+{
+    ReliableChannel a_chan, b_chan;
+    std::atomic<int> received { 0 };
+    MakeLoopbackPair(a_chan, b_chan, [](const IncomingPacket&) {}, [&](const IncompingPacket&) { ++received; });
+
+    const int kCount = 50;
+    uint8_t payload[16] = { 7 };
+    for(int i = 0; i < kCount; ++i)
+    {
+        ASSERT_EQ(a_chan.Send(2, 0, payload, sizeof(payload)), NetResult::Ok);
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        b.Tick(i * 0.01);
+    }
+    EXPECT_EQ(received.load(), kCount);
+    a_chan.Shutdown(); b_chan.Shutdown();
+}

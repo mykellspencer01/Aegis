@@ -3,9 +3,6 @@
 # docker build -t aegis     # builds library and runs test suite
 # docker run --rm aegis     # re-runs tests
 
-
-
-
 FROM ubuntu:24.04 AS build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
